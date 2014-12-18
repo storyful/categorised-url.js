@@ -1,0 +1,11 @@
+{
+  "name": "categorised-url.js",
+  "version": "0.0.0",
+  "main": "src/categorised-url.js",
+  "ignore": [
+    "spec",
+    ".gitignore",
+    "gulpfile.js",
+    "package.json"
+  ]
+}
