@@ -5,7 +5,7 @@
  */
 
 (function( global ) {
-  var Module = (function() {
+  var CategorisedUrl = (function() {
 
     var exports = {};
 
@@ -125,6 +125,10 @@
 
   })();
 
-  global.CategorisedUrl = Module;
+  if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
+    module.exports = CategorisedUrl;
+  } else {
+    global.CategorisedUrl = CategorisedUrl;
+  }
 
 })( this );

@@ -14,11 +14,6 @@ gulp.task('spec', function(){
     }));
 });
 
-gulp.task('watch', function(){
-  return gulp
-    .watch(['src/categorised-url.js', 'spec/**/*.js'], ['default']);
-});
-
 gulp.task('minify', function(){
   return gulp
     .src('src/categorised-url.js')
@@ -27,6 +22,11 @@ gulp.task('minify', function(){
   ;
 });
 
-gulp.task('default', function(next){
+gulp.task('build', function(next){
   return sequence('spec', 'minify', next);
+});
+
+gulp.task('default', function(){
+  return gulp
+    .watch(['src/categorised-url.js', 'spec/**/*.js'], ['build']);
 });
