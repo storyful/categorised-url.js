@@ -64,8 +64,17 @@
         }
       },
       {
+        // Twitter Media
+        pattern: /(http|https):\/\/(www\.)?twitter\.com\/[a-zA-Z0-9]{3,}.\/status\/([0-9]{1,})$/,
+        provider: 'twitter',
+        resource_type: 'media',
+        getResource: function(url){
+          return parseUrl(url).pathname_segments[3];
+        }
+      },
+      {
         // Twitter Profile
-        pattern: /(http|https):\/\/(www\.)?twitter\.com\/[a-zA-Z0-9]{1,}.*/,
+        pattern: /(http|https):\/\/(www\.)?twitter\.com\/[a-zA-Z0-9]{3,}.$\/?/,
         provider: 'twitter',
         resource_type: 'user',
         getResource: function(url){

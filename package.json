@@ -12,5 +12,8 @@
     "gulp-uglifyjs": "^0.5.0",
     "gulp-watch": "^2.0.0",
     "run-sequence": "^1.0.2"
+  },
+  "dependencies": {
+    "categorised-url.js": "git+https://github.com/storyful/categorised-url.js.git"
   }
 }

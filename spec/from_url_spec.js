@@ -104,6 +104,15 @@ describe('CategorisedUrl.fromUrl', function(){
       expect(catUrl.resource).toBe('storyful');
     });
 
+    it('twitter media', function(){
+      var url = 'https://twitter.com/BabyAnimalGifs/status/628559021042200576',
+          catUrl = CategorisedUrl.fromUrl(url);
+
+      expect(catUrl.provider).toBe('twitter');
+      expect(catUrl.resource_type).toBe('media');
+      expect(catUrl.resource).toBe('628559021042200576');
+    });
+
   });
 
   describe('Google+', function(){
