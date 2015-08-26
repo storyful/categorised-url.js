@@ -38,6 +38,15 @@ describe('CategorisedUrl.fromUrl', function(){
       expect(catUrl.resource).toBe('0zM3nApSvMg');
     });
 
+    it('youtube video embed', function(){
+      var url = 'http://www.youtube.com/embed/vt3i65Uk5p0?start=0',
+          catUrl = CategorisedUrl.fromUrl(url);
+
+      expect(catUrl.provider).toBe('youtube');
+      expect(catUrl.resource_type).toBe('media');
+      expect(catUrl.resource).toBe('vt3i65Uk5p0');
+    });
+
   });
 
   describe('Instagram', function(){

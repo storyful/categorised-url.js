@@ -28,12 +28,12 @@
       {
         // YouTube Media
         // http://stackoverflow.com/questions/3452546/javascript-regex-how-to-get-youtube-video-id-from-url
-        pattern: /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/,
+        pattern: /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??(v=)?([^#\&\?]*).*/,
         provider: 'youtube',
         resource_type: 'media',
         getResource: function(url){
           var match = url.match(this.pattern);
-          return (match[7].length == 11) ? match[7] : null;
+          return (match[8].length == 11) ? match[8] : null;
         }
       },
       {
