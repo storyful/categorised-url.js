@@ -38,8 +38,8 @@
           var match = url.match(this.pattern);
           return (match[8].length == 11) ? match[8] : null;
         },
-        getCanonicalUrl: function(resource){
-          return 'https://www.youtube.com/watch?v=' + resource;
+        getCanonicalUrl: function(url){
+          return 'https://www.youtube.com/watch?v=' + url.resource;
         }
       },
       {
@@ -50,8 +50,8 @@
         getResource: function(url){
           return parseUrl(url).pathname_segments[1];
         },
-        getCanonicalUrl: function(resource){
-          return 'https://instagram.com/p/' + resource + '/';
+        getCanonicalUrl: function(url){
+          return 'https://instagram.com/p/' + url.resource + '/';
         }
       },
       {
@@ -62,8 +62,8 @@
         getResource: function(url){
           return parseUrl(url).pathname_segments[2];
         },
-        getCanonicalUrl: function(resource){
-          return 'https://instagram.com/p/' + resource + '/';
+        getCanonicalUrl: function(url){
+          return 'https://instagram.com/p/' + url.resource + '/';
         }
       },
       {
@@ -74,8 +74,8 @@
         getResource: function(url){
           return parseUrl(url).search_segments.v;
         },
-        getCanonicalUrl: function(resource){
-          return null;
+        getCanonicalUrl: function(url){
+          return url.url;
         }
       },
       {
@@ -86,8 +86,8 @@
         getResource: function(url){
           return parseUrl(url).pathname_segments[3];
         },
-        getCanonicalUrl: function(resource){
-          return null;
+        getCanonicalUrl: function(url){
+          return url.url;
         }
       },
       {
@@ -98,8 +98,8 @@
         getResource: function(url){
           return parseUrl(url).pathname_segments[1];
         },
-        getCanonicalUrl: function(resource){
-          return null;
+        getCanonicalUrl: function(url){
+          return url;
         }
       }
     ];
@@ -140,10 +140,11 @@
         provider = providers[i];
 
         if( url.match(provider.pattern) ){
+          categorisedUrl.url            = url;
           categorisedUrl.provider       = provider.provider;
           categorisedUrl.resource_type  = provider.resource_type;
           categorisedUrl.resource       = provider.getResource(url);
-          categorisedUrl.canonical_url  = provider.getCanonicalUrl( categorisedUrl.resource );
+          categorisedUrl.canonical_url  = provider.getCanonicalUrl( categorisedUrl );
         }
       }
 
