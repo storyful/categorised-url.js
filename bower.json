@@ -1,6 +1,5 @@
 {
   "name": "categorised-url.js",
-  "version": "1.2.0",
   "main": "src/categorised-url.js",
   "ignore": [
     "spec",

@@ -1,6 +1,6 @@
 {
   "name": "categorised-url.js",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "private": true,
   "main": "src/categorised-url.js",
   "devDependencies": {
@@ -15,5 +15,8 @@
   },
   "dependencies": {
     "categorised-url.js": "git+https://github.com/storyful/categorised-url.js.git"
+  },
+  "scripts": {
+    "test": "gulp spec"
   }
 }
