@@ -273,6 +273,23 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
+    describe('twitter media with params', function(){
+      var url = 'https://twitter.com/BabyAnimalGifs/status/628559021042200576?ref_src=twsrc%5Etfw';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('twitter');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('media');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('628559021042200576');
+      });
+    });
+
     describe('twitter media', function(){
       var url = 'https://twitter.com/BabyAnimalGifs/status/628559021042200576';
       var catUrl = CategorisedUrl.fromUrl(url);
