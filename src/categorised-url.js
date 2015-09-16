@@ -6,7 +6,6 @@
 
 (function( global ) {
   var CategorisedUrl = (function() {
-
     var exports = {};
 
     var defaults = {
@@ -113,7 +112,6 @@
     exports.providers = providers;
 
     return exports;
-
   })();
 
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
