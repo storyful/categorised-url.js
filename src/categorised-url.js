@@ -10,131 +10,87 @@
     var exports = {};
 
     var defaults = {
+      url           : null,
       provider      : null,
       resource_type : null,
-      resource      : null
+      resource      : null,
+      canonical_url : null
     };
 
     var providers = [
       {
         // YouTube User
-        pattern: /((http|https):\/\/|)(www\.)?youtube\.com\/(channel\/|user\/)[a-zA-Z0-9]{1,}/,
+        pattern: /https?:\/\/(?:www\.)?youtube\.com\/(?:channel\/|user\/)([a-zA-Z0-9]{1,})$/,
         provider: 'youtube',
         resource_type: 'user',
-        getResource: function(url){
-          return parseUrl(url).pathname_segments[2];
-        },
-        getCanonicalUrl: function(resource){
-          return 'https://www.youtube.com/watch?v=' + resource;
-        }
+        canonical_url: 'https://www.youtube.com/watch?v={RESOURCE}'
       },
       {
         // YouTube Media
-        // http://stackoverflow.com/questions/3452546/javascript-regex-how-to-get-youtube-video-id-from-url
-        pattern: /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??(?:t=\S*&)?(v=)?([^#\&\?]*).*/,
+        pattern: /https?:\/\/.*(?:(?:youtu.be\/)|(?:v\/)|(?:\/u\/\w\/)|(?:embed\/)|(?:watch\?))\??(?:t=\S*&)?(?:v=)?([A-Za-z0-9-_]+).*$/,
         provider: 'youtube',
         resource_type: 'media',
-        getResource: function(url){
-          var match = url.match(this.pattern);
-          return (match[8].length == 11) ? match[8] : null;
-        },
-        getCanonicalUrl: function(url){
-          return 'https://www.youtube.com/watch?v=' + url.resource;
-        }
+        canonical_url: 'https://www.youtube.com/watch?v={RESOURCE}'
       },
       {
         // Instagram User
-        pattern: /(http|https):\/\/(www\.)?(instagr\.am|instagram\.com)\/(?!p\/).*/,
+        pattern: /https?:\/\/(?:www\.)?(?:instagr\.am|instagram\.com)\/(?!p\/)([\w\.]*)(?:\/)?$/,
         provider: 'instagram',
         resource_type: 'user',
-        getResource: function(url){
-          return parseUrl(url).pathname_segments[1];
-        },
-        getCanonicalUrl: function(url){
-          return 'https://instagram.com/p/' + url.resource + '/';
-        }
+        canonical_url: 'https://instagram.com/p/{RESOURCE}/'
       },
       {
         // Instagram Media
-        pattern: /(http|https):\/\/(www\.)?(instagr\.am|instagram\.com)\/p\/.*/,
+        pattern: /https?:\/\/(?:www\.)?(?:insta)(?:gr\.am|gram\.com)\/p\/(\w+)(?:\/|\?){0,2}.*$/,
         provider: 'instagram',
         resource_type: 'media',
-        getResource: function(url){
-          return parseUrl(url).pathname_segments[2];
-        },
-        getCanonicalUrl: function(url){
-          return 'https://instagram.com/p/' + url.resource + '/';
-        }
+        canonical_url: 'https://instagram.com/p/{RESOURCE}/'
       },
       {
         // Facebook Media
-        pattern: /(http|https):\/\/www\.facebook\.com\/video\.php\?v=[a-zA-Z0-9]{1,}.*/,
+        pattern: /https?:\/\/(?:www\.)facebook\.com\/(?:video\.php\?v=(\d+)|\S+\/videos\/(?:vb\.\S+\/)?(\d+))\/?.*$/,
         provider: 'facebook',
         resource_type: 'media',
-        getResource: function(url){
-          return parseUrl(url).search_segments.v;
-        },
-        getCanonicalUrl: function(url){
-          return url.url;
-        }
+        canonical_url: '{URL}'
       },
       {
         // Twitter Media
         pattern: /https?:\/\/(www\.)?twitter\.com\/[_a-zA-Z0-9]{3,}.\/status\/([0-9]{1,})\??(?:\S+)?$/,
         provider: 'twitter',
         resource_type: 'media',
-        getResource: function(url){
-          return parseUrl(url).pathname_segments[3];
-        },
-        getCanonicalUrl: function(url){
-          return url.url;
-        }
+        canonical_url: '{URL}'
       },
       {
         // Twitter Profile
-        pattern: /(http|https):\/\/(www\.)?twitter\.com\/[_a-zA-Z0-9]{3,}.$\/?/,
+        pattern: /https?:\/\/(?:www\.)?twitter\.com\/([_a-zA-Z0-9]{3,}.)\/?$/,
         provider: 'twitter',
         resource_type: 'user',
-        getResource: function(url){
-          return parseUrl(url).pathname_segments[1];
-        },
-        getCanonicalUrl: function(url){
-          return url;
-        }
+        canonical_url: 'categorisedUrl'
       }
     ];
 
-    // create parser, parse pathname segments
-    // and search segments and return a url object
-    var parseUrl = function(url){
+    var notEmpty = function(value){
+      return value !== undefined;
+    };
 
-      var parser = document.createElement('a');
-      parser.href = url;
+    var parseResource = function(pattern, url){
+      return pattern.exec(url).filter(notEmpty)[1];
+    };
 
-      parser.pathname_segments = parser.pathname.split('/');
-
-      parser.search_segments = parser.search
-        .substring(1)
-        .split("&")
-        .reduce(function(prev, curr, i, arr) {
-          var p = curr.split("=");
-          prev[decodeURIComponent(p[0])] = decodeURIComponent(p[1]);
-          return prev;
-        }, {});
-
-      return parser;
+    var parseCanonicalUrl = function(pattern, categorisedUrl){
+      return pattern
+        .replace('{RESOURCE}', categorisedUrl.resource)
+        .replace('{URL}', categorisedUrl.url);
     };
 
     // return an empty categorisedUrl object
-    var getCategorisedUrl = function(){
+    var getDefault = function(){
       return JSON.parse(JSON.stringify(defaults));
     };
 
-    // given a url run over all the providers
-    // and return a categorisedUrl object
     exports.fromUrl = function(url){
-      var provider,
-          categorisedUrl = getCategorisedUrl();
+      var provider = {};
+      var categorisedUrl = getDefault();
 
       for(var i = 0; i < providers.length; i++){
         provider = providers[i];
@@ -143,8 +99,10 @@
           categorisedUrl.url            = url;
           categorisedUrl.provider       = provider.provider;
           categorisedUrl.resource_type  = provider.resource_type;
-          categorisedUrl.resource       = provider.getResource(url);
-          categorisedUrl.canonical_url  = provider.getCanonicalUrl( categorisedUrl );
+          categorisedUrl.resource       = parseResource(provider.pattern, url);
+          categorisedUrl.canonical_url  = parseCanonicalUrl( provider.canonical_url, categorisedUrl );
+
+          break;
         }
       }
 

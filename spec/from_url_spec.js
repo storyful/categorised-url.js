@@ -1,7 +1,7 @@
 describe('CategorisedUrl.fromUrl', function(){
 
   describe('YouTube', function(){
-    describe('YouTube User', function(){
+    describe('user', function(){
       var url = 'https://www.youtube.com/user/storyful';
       var catUrl = CategorisedUrl.fromUrl(url);
 
@@ -18,7 +18,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
-    describe('YouTube Channel', function(){
+    describe('channel', function(){
       var url = 'https://www.youtube.com/channel/storyful';
       var catUrl = CategorisedUrl.fromUrl(url);
 
@@ -35,7 +35,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
-    describe('YouTube Video', function(){
+    describe('video', function(){
       var url = 'https://www.youtube.com/watch?v=ORmZxqEl_AY';
       var catUrl = CategorisedUrl.fromUrl(url);
 
@@ -56,7 +56,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
-    describe('YouTube Video (short)', function(){
+    describe('video short', function(){
       var url = 'http://youtu.be/0zM3nApSvMg';
       var catUrl = CategorisedUrl.fromUrl(url);
 
@@ -77,7 +77,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
-    describe('YouTube Video Embed', function(){
+    describe('video embed', function(){
       var url = 'http://www.youtube.com/embed/vt3i65Uk5p0?start=0';
       var catUrl = CategorisedUrl.fromUrl(url);
 
@@ -98,7 +98,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
-    describe('YouTube Video at current time', function(){
+    describe('video at current time', function(){
       var url = 'https://youtu.be/2X-BEZCSR1U?t=3';
       var catUrl = CategorisedUrl.fromUrl(url);
 
@@ -119,7 +119,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
-    describe('YouTube Video at current time (reversed)', function(){
+    describe('video at current time (reversed)', function(){
       var url = 'https://www.youtube.com/watch?t=3&v=ORmZxqEl_AY';
       var catUrl = CategorisedUrl.fromUrl(url);
 
@@ -142,7 +142,7 @@ describe('CategorisedUrl.fromUrl', function(){
   });
 
   describe('Instagram', function(){
-    describe('instagram user', function(){
+    describe('user', function(){
       var url = 'http://instagram.com/google/';
       var catUrl = CategorisedUrl.fromUrl(url);
 
@@ -159,7 +159,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
-    describe('instagram media', function(){
+    describe('media', function(){
       var url = 'http://instagram.com/p/wqLyuvQr9Y';
       var catUrl = CategorisedUrl.fromUrl(url);
 
@@ -180,7 +180,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
-    describe('instagram media modal', function(){
+    describe('media modal', function(){
       var url = 'http://instagram.com/p/wqLyuvQr9Y/?modal=true';
       var catUrl = CategorisedUrl.fromUrl(url);
 
@@ -203,9 +203,9 @@ describe('CategorisedUrl.fromUrl', function(){
   });
 
   describe('Facebook', function(){
-    describe('facebook video params', function(){
-      var url = 'https://www.facebook.com/video.php?v=587644514714297&fref=nf',
-          catUrl = CategorisedUrl.fromUrl(url);
+    describe('video as with multiple query param', function(){
+      var url = 'https://www.facebook.com/video.php?v=587644514714297&fref=nf';
+      var catUrl = CategorisedUrl.fromUrl(url);
 
       it('should return the provider', function(){
         expect(catUrl.provider).toBe('facebook');
@@ -220,7 +220,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
-    describe('facebook video', function(){
+    describe('video with query params', function(){
       var url = 'https://www.facebook.com/video.php?v=679866472111060';
       var catUrl = CategorisedUrl.fromUrl(url);
 
@@ -236,10 +236,61 @@ describe('CategorisedUrl.fromUrl', function(){
         expect(catUrl.resource).toBe('679866472111060');
       });
     });
+
+    describe('video with user ID', function(){
+      var url = 'https://www.facebook.com/112235829462/videos/10153555865639463/';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('facebook');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('media');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('10153555865639463');
+      });
+    });
+
+    describe('Facebook Video with user ID and vb segment', function(){
+      var url = 'https://www.facebook.com/100004967499160/videos/vb.100004967499160/534252576750321/?type=3&permPage=1';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('facebook');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('media');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('534252576750321');
+      });
+    });
+
+    describe('Facebook Video with username', function(){
+      var url = 'https://www.facebook.com/LovinDublin/videos/vb.113566062003506/1174153659278069/?type=2&theater';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('facebook');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('media');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('1174153659278069');
+      });
+    });
   });
 
   describe('Twitter', function(){
-    describe('twitter profile', function(){
+    describe('profile', function(){
       var url = 'https://twitter.com/storyful';
       var catUrl = CategorisedUrl.fromUrl(url);
 
@@ -256,7 +307,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
-    describe('twitter media with special characters', function(){
+    describe('media with special characters', function(){
       var url = 'https://twitter.com/_Jordan/status/630053580301447169';
       var catUrl = CategorisedUrl.fromUrl(url);
 
@@ -306,10 +357,6 @@ describe('CategorisedUrl.fromUrl', function(){
         expect(catUrl.resource).toBe('628559021042200576');
       });
     });
-  });
-
-  describe('Google+', function(){
-    it('google plus video');
   });
 
 });
