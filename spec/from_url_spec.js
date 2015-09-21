@@ -98,6 +98,27 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
+    describe('video embed withoud protocol', function(){
+      var url = '//www.youtube.com/embed/9LU1AgqqUpA?hd=1&rel=0';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('youtube');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('media');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('9LU1AgqqUpA');
+      });
+
+      it('should return the canonical url', function(){
+        expect(catUrl.canonical_url).toBe('https://www.youtube.com/watch?v=9LU1AgqqUpA');
+      });
+    })
+
     describe('video at current time', function(){
       var url = 'https://youtu.be/2X-BEZCSR1U?t=3';
       var catUrl = CategorisedUrl.fromUrl(url);

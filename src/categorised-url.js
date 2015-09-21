@@ -19,49 +19,49 @@
     var providers = [
       {
         // YouTube User
-        pattern: /https?:\/\/(?:www\.)?youtube\.com\/(?:channel\/|user\/)([a-zA-Z0-9]{1,})$/,
+        pattern: /(?:https?:)?\/\/(?:www\.)?youtube\.com\/(?:channel\/|user\/)([a-zA-Z0-9]{1,})$/,
         provider: 'youtube',
         resource_type: 'user',
         canonical_url: 'https://www.youtube.com/watch?v={RESOURCE}'
       },
       {
         // YouTube Media
-        pattern: /https?:\/\/.*(?:(?:youtu.be\/)|(?:v\/)|(?:\/u\/\w\/)|(?:embed\/)|(?:watch\?))\??(?:t=\S*&)?(?:v=)?([A-Za-z0-9-_]+).*$/,
+        pattern: /(?:https?:)?\/\/.*(?:(?:youtu.be\/)|(?:v\/)|(?:\/u\/\w\/)|(?:embed\/)|(?:watch\?))\??(?:t=\S*&)?(?:v=)?([A-Za-z0-9-_]+).*$/,
         provider: 'youtube',
         resource_type: 'media',
         canonical_url: 'https://www.youtube.com/watch?v={RESOURCE}'
       },
       {
         // Instagram User
-        pattern: /https?:\/\/(?:www\.)?(?:instagr\.am|instagram\.com)\/(?!p\/)([\w\.]*)(?:\/)?$/,
+        pattern: /(?:https?:)?\/\/(?:www\.)?(?:instagr\.am|instagram\.com)\/(?!p\/)([\w\.]*)(?:\/)?$/,
         provider: 'instagram',
         resource_type: 'user',
         canonical_url: 'https://instagram.com/p/{RESOURCE}/'
       },
       {
         // Instagram Media
-        pattern: /https?:\/\/(?:www\.)?(?:insta)(?:gr\.am|gram\.com)\/p\/(\w+)(?:\/|\?){0,2}.*$/,
+        pattern: /(?:https?:)?\/\/(?:www\.)?(?:insta)(?:gr\.am|gram\.com)\/p\/(\w+)(?:\/|\?){0,2}.*$/,
         provider: 'instagram',
         resource_type: 'media',
         canonical_url: 'https://instagram.com/p/{RESOURCE}/'
       },
       {
         // Facebook Media
-        pattern: /https?:\/\/(?:www\.)facebook\.com\/(?:video\.php\?v=(\d+)|\S+\/videos\/(?:vb\.\S+\/)?(\d+))\/?.*$/,
+        pattern: /(?:https?:)?\/\/(?:www\.)facebook\.com\/(?:video\.php\?v=(\d+)|\S+\/videos\/(?:vb\.\S+\/)?(\d+))\/?.*$/,
         provider: 'facebook',
         resource_type: 'media',
         canonical_url: '{URL}'
       },
       {
         // Twitter Media
-        pattern: /https?:\/\/(www\.)?twitter\.com\/[_a-zA-Z0-9]{3,}.\/status\/([0-9]{1,})\??(?:\S+)?$/,
+        pattern: /(?:https?:)?\/\/(www\.)?twitter\.com\/[_a-zA-Z0-9]{3,}.\/status\/([0-9]{1,})\??(?:\S+)?$/,
         provider: 'twitter',
         resource_type: 'media',
         canonical_url: '{URL}'
       },
       {
         // Twitter Profile
-        pattern: /https?:\/\/(?:www\.)?twitter\.com\/([_a-zA-Z0-9]{3,}.)\/?$/,
+        pattern: /(?:https?:)?\/\/(?:www\.)?twitter\.com\/([_a-zA-Z0-9]{3,}.)\/?$/,
         provider: 'twitter',
         resource_type: 'user',
         canonical_url: 'categorisedUrl'
