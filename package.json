@@ -23,7 +23,7 @@
     "lint": "jshint .",
     "validate": "npm ls"
   },
-  "precommit": [
+  "pre-commit": [
     "jshint",
     "test"
   ]
