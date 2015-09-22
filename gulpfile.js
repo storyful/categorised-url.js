@@ -17,8 +17,7 @@ gulp.task('minify', function(){
   return gulp
     .src('src/categorised-url.js')
     .pipe(uglify('dist/categorised-url.min.js'))
-    .pipe(gulp.dest('.'))
-  ;
+    .pipe(gulp.dest('.'));
 });
 
 gulp.task('build', function(next){
