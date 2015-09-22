@@ -1,8 +1,7 @@
-var gulp = require('gulp'),
-    jasmine = require('gulp-jasmine-phantom'),
-    watch = require('gulp-watch'),
-    uglify = require('gulp-uglifyjs'),
-    sequence = require('run-sequence');
+var gulp = require('gulp');
+var jasmine = require('gulp-jasmine-phantom');
+var uglify = require('gulp-uglifyjs');
+var sequence = require('run-sequence');
 
 gulp.task('spec', function(){
   return gulp

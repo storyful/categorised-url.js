@@ -1,3 +1,5 @@
+/* jshint undef: false, unused: true */
+
 describe('CategorisedUrl.fromUrl', function(){
 
   describe('YouTube', function(){
@@ -117,7 +119,7 @@ describe('CategorisedUrl.fromUrl', function(){
       it('should return the canonical url', function(){
         expect(catUrl.canonical_url).toBe('https://www.youtube.com/watch?v=9LU1AgqqUpA');
       });
-    })
+    });
 
     describe('video at current time', function(){
       var url = 'https://youtu.be/2X-BEZCSR1U?t=3';
@@ -396,7 +398,4 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
   });
-
-
-
 });

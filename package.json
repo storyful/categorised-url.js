@@ -19,7 +19,7 @@
   },
   "scripts": {
     "test": "gulp spec",
-    "jshint": "jshint src/.",
+    "jshint": "jshint",
     "lint": "jshint .",
     "validate": "npm ls"
   },
