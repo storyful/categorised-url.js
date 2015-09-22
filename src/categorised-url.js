@@ -26,7 +26,7 @@
       },
       {
         // YouTube Media
-        pattern: /(?:https?:)?\/\/.*(?:(?:youtu.be\/)|(?:v\/)|(?:\/u\/\w\/)|(?:embed\/)|(?:watch\?))\??(?:t=\S*&)?(?:v=)?([A-Za-z0-9-_]+).*$/,
+        pattern: /(?:https?:)?\/{2}(?:www\.)?(?:(?:youtu\.be)|(?:youtube\.com)){1}\/?(?:(?:v\/)|(?:\/u\/\w\/)|(?:embed\/)|(?:watch\?))?\??(?:t=\S*&)?(?:v=)?([A-Za-z0-9-_]+).*/,
         provider: 'youtube',
         resource_type: 'media',
         canonical_url: 'https://www.youtube.com/watch?v={RESOURCE}'

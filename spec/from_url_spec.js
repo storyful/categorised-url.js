@@ -378,6 +378,25 @@ describe('CategorisedUrl.fromUrl', function(){
         expect(catUrl.resource).toBe('628559021042200576');
       });
     });
+
+    describe('twitter media matched as YouTube due to parse order', function(){
+      var url = 'https://twitter.com/ChromiumDev/status/646221201254166528';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('twitter');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('media');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('646221201254166528');
+      });
+    });
   });
+
+
 
 });
