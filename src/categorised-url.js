@@ -117,7 +117,7 @@
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
     module.exports = CategorisedUrl;
   } else {
-    global.CategorisedUrl = CategorisedUrl;
+    global.CategorisedUrl = CategorisedUrl
   }
 
 })( this );
