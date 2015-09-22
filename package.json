@@ -19,7 +19,9 @@
   },
   "scripts": {
     "test": "gulp spec",
-    "jshint": "jshint src/."
+    "jshint": "jshint src/.",
+    "lint": "jshint .",
+    "validate": "npm ls"
   },
   "precommit": [
     "jshint",
