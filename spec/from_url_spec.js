@@ -142,6 +142,27 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
+    describe('video as mobile URL', function(){
+      var url = 'http://m.youtube.com/watch?v=0zM3nApSvMg&desktop_uri=%2Fwatch%3Fv%3D0zM3nApSvMg';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('youtube');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('media');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('0zM3nApSvMg');
+      });
+
+      it('should return the canonical url', function(){
+        expect(catUrl.canonical_url).toBe('https://www.youtube.com/watch?v=0zM3nApSvMg');
+      });
+    });
+
     describe('video at current time (reversed)', function(){
       var url = 'https://www.youtube.com/watch?t=3&v=ORmZxqEl_AY';
       var catUrl = CategorisedUrl.fromUrl(url);
@@ -277,7 +298,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
-    describe('Facebook Video with user ID and vb segment', function(){
+    describe('video with user ID and vb segment', function(){
       var url = 'https://www.facebook.com/100004967499160/videos/vb.100004967499160/534252576750321/?type=3&permPage=1';
       var catUrl = CategorisedUrl.fromUrl(url);
 
@@ -294,7 +315,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
-    describe('Facebook Video with username', function(){
+    describe('video with username', function(){
       var url = 'https://www.facebook.com/LovinDublin/videos/vb.113566062003506/1174153659278069/?type=2&theater';
       var catUrl = CategorisedUrl.fromUrl(url);
 
@@ -310,6 +331,59 @@ describe('CategorisedUrl.fromUrl', function(){
         expect(catUrl.resource).toBe('1174153659278069');
       });
     });
+
+    describe('photo', function(){
+      var url = 'https://www.facebook.com/SaintJosephsCollegeOfMaine/photos/a.116322268422667.28457.100892786632282/949222151799337/?type=3';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('facebook');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('media');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('949222151799337');
+      });
+    });
+
+    describe('post', function(){
+      var url = 'https://www.facebook.com/sinead.m.wenn/posts/10153239957579053';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('facebook');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('media');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('10153239957579053');
+      });
+    });
+
+    describe('story', function(){
+      var url = 'https://www.facebook.com/permalink.php?story_fbid=1479985105636419&id=1433208640314066';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('facebook');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('media');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('1479985105636419');
+      });
+    });
+
+
   });
 
   describe('Twitter', function(){
@@ -347,7 +421,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
-    describe('twitter media with params', function(){
+    describe('media with params', function(){
       var url = 'https://twitter.com/BabyAnimalGifs/status/628559021042200576?ref_src=twsrc%5Etfw';
       var catUrl = CategorisedUrl.fromUrl(url);
 
@@ -364,7 +438,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
-    describe('twitter media', function(){
+    describe('media', function(){
       var url = 'https://twitter.com/BabyAnimalGifs/status/628559021042200576';
       var catUrl = CategorisedUrl.fromUrl(url);
 
@@ -381,7 +455,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
-    describe('twitter media matched as YouTube due to parse order', function(){
+    describe('media matched as YouTube due to parse order', function(){
       var url = 'https://twitter.com/ChromiumDev/status/646221201254166528';
       var catUrl = CategorisedUrl.fromUrl(url);
 

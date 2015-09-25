@@ -19,14 +19,14 @@
     var providers = [
       {
         // YouTube User
-        pattern: /(?:https?:)?\/\/(?:www\.)?youtube\.com\/(?:channel\/|user\/)([a-zA-Z0-9]{1,})$/,
+        pattern: /(?:https?:)?\/\/(?:www\.)?youtube\.com\/(?:channel\/|user\/|attribution_link\/)([a-zA-Z0-9]{1,})$/,
         provider: 'youtube',
         resource_type: 'user',
         canonical_url: 'https://www.youtube.com/watch?v={RESOURCE}'
       },
       {
         // YouTube Media
-        pattern: /(?:https?:)?\/{2}(?:www\.)?(?:(?:youtu\.be)|(?:youtube\.com)){1}\/?(?:(?:v\/)|(?:\/u\/\w\/)|(?:embed\/)|(?:watch\?))?\??(?:t=\S*&)?(?:v=)?([A-Za-z0-9-_]+).*/,
+        pattern: /(?:https?:)?\/{2}(?:(?:www|m)\.)?(?:(?:youtu\.be)|(?:youtube\.com)){1}\/?(?:attribution_link)?(?:(?:v\/)|(?:\/u\/\w\/)|(?:embed\/)|(?:watch\?))?\??(?:(?:t=\S*&|u=\S*&)+)?(?:v=)?(?:v=)?([A-Za-z0-9-_]+).*/,
         provider: 'youtube',
         resource_type: 'media',
         canonical_url: 'https://www.youtube.com/watch?v={RESOURCE}'
@@ -44,6 +44,14 @@
         provider: 'instagram',
         resource_type: 'media',
         canonical_url: 'https://instagram.com/p/{RESOURCE}/'
+      },
+
+      {
+        // Facebook Media: photos and posts
+        pattern: /(?:https?:)?\/\/(?:www\.)facebook\.com\/(?:[a-zA-Z0-9\.]+\/?)(?:(?:photos\/[a-zA-Z0-9\.]+\/)|(?:posts\/)){1}(\d+)/,
+        provider: 'facebook',
+        resource_type: 'media',
+        canonical_url: '{URL}'
       },
       {
         // Facebook Media
@@ -90,15 +98,16 @@
     exports.fromUrl = function(url){
       var provider = {};
       var categorisedUrl = getDefault();
+      var decodedUrl = decodeURIComponent(url);
 
       for(var i = 0; i < providers.length; i++){
         provider = providers[i];
 
-        if( url.match(provider.pattern) ){
-          categorisedUrl.url            = url;
+        if( decodedUrl.match(provider.pattern) ){
+          categorisedUrl.url            = decodedUrl;
           categorisedUrl.provider       = provider.provider;
           categorisedUrl.resource_type  = provider.resource_type;
-          categorisedUrl.resource       = parseResource(provider.pattern, url);
+          categorisedUrl.resource       = parseResource(provider.pattern, decodedUrl);
           categorisedUrl.canonical_url  = parseCanonicalUrl( provider.canonical_url, categorisedUrl );
 
           break;
