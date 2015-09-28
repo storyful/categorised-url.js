@@ -45,17 +45,23 @@
         resource_type: 'media',
         canonical_url: 'https://instagram.com/p/{RESOURCE}/'
       },
-
       {
-        // Facebook Media: photos and posts
-        pattern: /(?:https?:)?\/\/(?:www\.)facebook\.com\/(?:[a-zA-Z0-9\.]+\/?)(?:(?:photos\/[a-zA-Z0-9\.]+\/)|(?:posts\/)){1}(\d+)/,
+        // Facebook Media: videos
+        pattern: /(?:https?:)?\/\/(?:www\.)facebook\.com\/(?:video\.php\?v=(\d+)|\S+\/videos\/(?:vb\.\S+\/)?(\d+))\/?.*$/,
         provider: 'facebook',
         resource_type: 'media',
         canonical_url: '{URL}'
       },
       {
-        // Facebook Media
-        pattern: /(?:https?:)?\/\/(?:www\.)facebook\.com\/(?:video\.php\?v=(\d+)|\S+\/videos\/(?:vb\.\S+\/)?(\d+))\/?.*$/,
+        // Facebook Media: photo
+        pattern: /(?:https?:)?\/\/(?:www\.)facebook\.com\/(?:(?:[a-zA-Z0-9\.]+\/?photos\/(?:[a-zA-Z0-9\.]+\/)?[a-zA-Z0-9\.]+\/(\d+))|(?:photo.php\?fbid=(\d+)\&?))+.+/,
+        provider: 'facebook',
+        resource_type: 'media',
+        canonical_url: 'https://www.facebook.com/photo.php?fbid={RESOURCE}'
+      },
+      {
+        // Facebook Media: posts
+        pattern: /(?:https?:)?\/\/(?:www\.)facebook\.com\/(?:[a-zA-Z0-9\.]+\/?)(?:posts\/)*(\d+)/,
         provider: 'facebook',
         resource_type: 'media',
         canonical_url: '{URL}'
