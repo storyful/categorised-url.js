@@ -366,6 +366,23 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
+    describe('photo from story', function(){
+      var url = 'https://www.facebook.com/octopusoficial/photos/pb.470714623073954.-2207520000.-1443532328./742148939263853/?type=3&theater';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('facebook');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('media');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('742148939263853');
+      });
+    });
+
     describe('post', function(){
       var url = 'https://www.facebook.com/sinead.m.wenn/posts/10153239957579053';
       var catUrl = CategorisedUrl.fromUrl(url);

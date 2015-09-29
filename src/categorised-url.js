@@ -54,7 +54,7 @@
       },
       {
         // Facebook Media: photo
-        pattern: /(?:https?:)?\/\/(?:www\.)facebook\.com\/(?:(?:[a-zA-Z0-9\.]+\/?photos\/(?:[a-zA-Z0-9\.]+\/)?[a-zA-Z0-9\.]+\/(\d+))|(?:photo.php\?fbid=(\d+)\&?))+.+/,
+        pattern: /(?:https?:)?\/\/(?:www\.)facebook\.com\/(?:(?:[a-zA-Z0-9\.]+\/?photos\/(?:[a-zA-Z0-9\.-]+\/)?[a-zA-Z0-9\.-]+\/(\d+))|(?:photo.php\?fbid=(\d+)\&?))+.+/,
         provider: 'facebook',
         resource_type: 'media',
         canonical_url: 'https://www.facebook.com/photo.php?fbid={RESOURCE}'
