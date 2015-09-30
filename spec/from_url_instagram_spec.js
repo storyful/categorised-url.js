@@ -3,6 +3,7 @@
 describe('CategorisedUrl.fromUrl', function(){
 
   describe('Instagram', function(){
+
     describe('user', function(){
       var url = 'http://instagram.com/google/';
       var catUrl = CategorisedUrl.fromUrl(url);
