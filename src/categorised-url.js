@@ -47,7 +47,7 @@
       },
       {
         // Facebook Media: videos
-        pattern: /(?:https?:)?\/\/(?:www\.)facebook\.com\/(?:video\.php\?v=(\d+)|\S+\/videos\/(?:vb\.\S+\/)?(\d+))\/?.*$/,
+        pattern: /(?:https?:)?\/\/(?:www\.)facebook\.com\/(?:video\/)?(?:video\.php\?v=(\d+)|\S+\/videos\/(?:vb\.\S+\/)?(\d+))\/?.*$/,
         provider: 'facebook',
         resource_type: 'media',
         canonical_url: '{URL}'

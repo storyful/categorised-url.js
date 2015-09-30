@@ -21,6 +21,23 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
+    describe('video from embed with query params', function(){
+      var url = 'https://www.facebook.com/video/video.php?v=890784274303322';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('facebook');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('media');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('890784274303322');
+      });
+    });
+
     describe('video with query params', function(){
       var url = 'https://www.facebook.com/video.php?v=679866472111060';
       var catUrl = CategorisedUrl.fromUrl(url);
