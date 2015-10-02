@@ -67,6 +67,13 @@
         canonical_url: '{URL}'
       },
       {
+        // Facebook Media: stories
+        pattern: /(?:https?:)?\/\/(?:www\.)facebook\.com\/permalink\.php\?(.+)/,
+        provider: 'facebook',
+        resource_type: 'media',
+        canonical_url: '{URL}'
+      },
+      {
         // Twitter Media
         pattern: /(?:https?:)?\/\/(www\.)?twitter\.com\/[_a-zA-Z0-9]{3,}.\/status\/([0-9]{1,})\??(?:\S+)?$/,
         provider: 'twitter',
