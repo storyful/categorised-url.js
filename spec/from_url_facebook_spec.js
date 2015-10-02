@@ -106,6 +106,23 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
+    describe('photo from canonical', function(){
+      var url = 'https://www.facebook.com/photo.php?fbid=1047118108645181';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('facebook');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('media');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('1047118108645181');
+      });
+    });
+
     describe('photo', function(){
       var url = 'https://www.facebook.com/SaintJosephsCollegeOfMaine/photos/a.116322268422667.28457.100892786632282/949222151799337/?type=3';
       var catUrl = CategorisedUrl.fromUrl(url);
