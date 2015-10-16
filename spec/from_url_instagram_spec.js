@@ -63,6 +63,27 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
+    describe('short url', function(){
+      var url = 'http://instagr.am/p/fA9uwTtkSN/.';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('instagram');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('media');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('fA9uwTtkSN');
+      });
+
+      it('should return the canonical url', function(){
+        expect(catUrl.canonical_url).toBe('https://instagram.com/p/fA9uwTtkSN/');
+      });
+    });
+
   });
 
 });
