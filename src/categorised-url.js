@@ -22,7 +22,7 @@
         pattern: /(?:https?:)?\/\/(?:www\.)?youtube\.com\/(?:channel\/|user\/|attribution_link\/)([a-zA-Z0-9]{1,})$/,
         provider: 'youtube',
         resource_type: 'user',
-        canonical_url: 'https://www.youtube.com/watch?v={RESOURCE}'
+        canonical_url: 'https://www.youtube.com/user/{RESOURCE}/featured'
       },
       {
         // YouTube Media
