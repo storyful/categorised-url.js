@@ -40,7 +40,7 @@
       },
       {
         // Instagram Media
-        pattern: /(?:https?:)?\/\/(?:www\.)?(?:insta)(?:gr\.am|gram\.com)\/p\/(\w+)(?:\/|\?){0,2}.*$/,
+        pattern: /(?:https?:)?\/\/(?:www\.)?(?:insta)(?:gr\.am|gram\.com)\/p\/([a-zA-Z0-9-_]+)(?:\/|\?){0,2}.*$/,
         provider: 'instagram',
         resource_type: 'media',
         canonical_url: 'https://instagram.com/p/{RESOURCE}/'

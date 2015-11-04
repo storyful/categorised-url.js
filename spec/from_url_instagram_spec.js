@@ -84,6 +84,29 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
+    describe('url with takend-at and special characters', function(){
+      var url = 'https://instagram.com/p/9kJmozQ-v8/?taken-at=235433059';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('instagram');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('media');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('9kJmozQ-v8');
+      });
+
+      it('should return the canonical url', function(){
+        expect(catUrl.canonical_url).toBe('https://instagram.com/p/9kJmozQ-v8/');
+      });
+    });
+
+
+
   });
 
 });
