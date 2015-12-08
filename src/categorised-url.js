@@ -36,14 +36,14 @@
         pattern: /(?:https?:)?\/\/(?:www\.)?(?:instagr\.am|instagram\.com)\/(?!p\/)([\w\.]*)(?:\/)?$/,
         provider: 'instagram',
         resource_type: 'user',
-        canonical_url: 'https://instagram.com/p/{RESOURCE}/'
+        canonical_url: 'https://www.instagram.com/p/{RESOURCE}/'
       },
       {
         // Instagram Media
         pattern: /(?:https?:)?\/\/(?:www\.)?(?:insta)(?:gr\.am|gram\.com)\/p\/([a-zA-Z0-9-_]+)(?:\/|\?){0,2}.*$/,
         provider: 'instagram',
         resource_type: 'media',
-        canonical_url: 'https://instagram.com/p/{RESOURCE}/'
+        canonical_url: 'https://www.instagram.com/p/{RESOURCE}/'
       },
       {
         // Facebook Media: videos

@@ -38,7 +38,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
 
       it('should return the canonical url', function(){
-        expect(catUrl.canonical_url).toBe('https://instagram.com/p/wqLyuvQr9Y/');
+        expect(catUrl.canonical_url).toBe('https://www.instagram.com/p/wqLyuvQr9Y/');
       });
     });
 
@@ -59,7 +59,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
 
       it('should return the canonical url', function(){
-        expect(catUrl.canonical_url).toBe('https://instagram.com/p/wqLyuvQr9Y/');
+        expect(catUrl.canonical_url).toBe('https://www.instagram.com/p/wqLyuvQr9Y/');
       });
     });
 
@@ -80,12 +80,12 @@ describe('CategorisedUrl.fromUrl', function(){
       });
 
       it('should return the canonical url', function(){
-        expect(catUrl.canonical_url).toBe('https://instagram.com/p/fA9uwTtkSN/');
+        expect(catUrl.canonical_url).toBe('https://www.instagram.com/p/fA9uwTtkSN/');
       });
     });
 
     describe('url with takend-at and special characters', function(){
-      var url = 'https://instagram.com/p/9kJmozQ-v8/?taken-at=235433059';
+      var url = 'https://www.instagram.com/p/9kJmozQ-v8/?taken-at=235433059';
       var catUrl = CategorisedUrl.fromUrl(url);
 
       it('should return the provider', function(){
@@ -101,7 +101,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
 
       it('should return the canonical url', function(){
-        expect(catUrl.canonical_url).toBe('https://instagram.com/p/9kJmozQ-v8/');
+        expect(catUrl.canonical_url).toBe('https://www.instagram.com/p/9kJmozQ-v8/');
       });
     });
 
