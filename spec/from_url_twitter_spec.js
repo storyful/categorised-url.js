@@ -20,6 +20,23 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
+    describe('profile with short handle', function(){
+      var url = 'https://twitter.com/h';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('twitter');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('user');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('h');
+      });
+    });
+
     describe('media with special characters', function(){
       var url = 'https://twitter.com/_Jordan/status/630053580301447169';
       var catUrl = CategorisedUrl.fromUrl(url);
@@ -85,6 +102,23 @@ describe('CategorisedUrl.fromUrl', function(){
 
       it('should return the resource', function(){
         expect(catUrl.resource).toBe('646221201254166528');
+      });
+    });
+
+    describe('media with short user handles', function(){
+      var url = 'https://twitter.com/h/status/697843643374145536';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('twitter');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('media');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('697843643374145536');
       });
     });
   });

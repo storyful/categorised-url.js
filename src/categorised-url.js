@@ -75,14 +75,14 @@
       },
       {
         // Twitter Media
-        pattern: /(?:https?:)?\/\/(www\.)?twitter\.com\/[_a-zA-Z0-9]{3,}.\/status\/([0-9]{1,})\??(?:\S+)?$/,
+        pattern: /(?:https?:)?\/\/(www\.)?twitter\.com\/[_a-zA-Z0-9]{0,}.\/status\/([0-9]{1,})\??(?:\S+)?$/,
         provider: 'twitter',
         resource_type: 'media',
         canonical_url: '{URL}'
       },
       {
         // Twitter Profile
-        pattern: /(?:https?:)?\/\/(?:www\.)?twitter\.com\/([_a-zA-Z0-9]{3,}.)\/?$/,
+        pattern: /(?:https?:)?\/\/(?:www\.)?twitter\.com\/([_a-zA-Z0-9]{0,}.)\/?$/,
         provider: 'twitter',
         resource_type: 'user',
         canonical_url: 'categorisedUrl'
