@@ -61,7 +61,7 @@
       },
       {
         // Facebook Media: posts
-        pattern: /(?:https?:)?\/\/(?:www\.)facebook\.com\/(?:[a-zA-Z0-9\.]+\/?)(?:posts\/)*(\d+)/,
+        pattern: /(?:https?:)?\/\/(?:www\.)facebook\.com\/(?:[a-zA-Z0-9\.]+\/?)(?:posts\/)+(\d+)/,
         provider: 'facebook',
         resource_type: 'media',
         canonical_url: '{URL}'
@@ -72,6 +72,13 @@
         provider: 'facebook',
         resource_type: 'media',
         canonical_url: '{URL}'
+      },
+      {
+        // Facebook Profile
+        pattern: /(?:https?:)?\/\/(?:www\.)facebook\.com\/(?:[a-zA-Z0-9\.]+\/?)/,
+        provider: 'facebook',
+        resource_type: 'user',
+        canonical_url: 'https://www.facebook.com/{RESOURCE}'
       },
       {
         // Twitter Media
@@ -86,6 +93,13 @@
         provider: 'twitter',
         resource_type: 'user',
         canonical_url: 'categorisedUrl'
+      },
+      {
+        // Vimeo Media
+        pattern: /.*vimeo\..*\/(\d+)/,
+        provider: 'vimeo',
+        resource_type: 'media',
+        canonical_url: 'https://vimeo.com/{RESOURCE}'
       }
     ];
 
