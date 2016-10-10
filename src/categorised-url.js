@@ -100,6 +100,20 @@
         provider: 'vimeo',
         resource_type: 'media',
         canonical_url: 'https://vimeo.com/{RESOURCE}'
+      },
+      {
+        // Vine Profile
+        pattern: ,
+        provider: 'vine',
+        resource_type: 'user',
+        canonical_url: 'https://vine.co/{RESOURCE}?mode=list' //https://vine.co/mmitchelldaviss?mode=list
+      },
+      {
+        // Vine Resource
+        pattern: /^http(s)?:\/\/(www\.)?vine\.co\/v/,
+        provider: 'vine',
+        resource_type: 'media',
+        canonical_url: 'https://vine.co/v/{RESOURCE}' //https://vine.co/v/5gAphDzxlYt
       }
     ];
 
