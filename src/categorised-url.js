@@ -103,7 +103,7 @@
       },
       {
         // Vine Profile
-        pattern: ,
+        pattern: /^http(s)?:\/\/vine\.co\/([a-zA-Z0-9]+)/,
         provider: 'vine',
         resource_type: 'user',
         canonical_url: 'https://vine.co/{RESOURCE}?mode=list' //https://vine.co/mmitchelldaviss?mode=list
