@@ -113,7 +113,7 @@
         pattern: /^http(s)?:\/\/(www\.)?vine\.co\/v/,
         provider: 'vine',
         resource_type: 'media',
-        canonical_url: 'https://vine.co/v/{RESOURCE}' //https://vine.co/v/5gAphDzxlYt
+        canonical_url: 'https://vine.co/v/' //https://vine.co/v/5gAphDzxlYt
       }
     ];
 
