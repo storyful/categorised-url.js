@@ -103,17 +103,17 @@
       },
       {
         // Vine Resource
-        pattern: /^http(s)?:\/\/(www\.)?vine\.co\/v/,
+        pattern: /.*vine\.co\/v\/([a-zA-Z0-9]+)/,
         provider: 'vine',
         resource_type: 'media',
-        canonical_url: 'https://vine.co/v/' //https://vine.co/v/5gAphDzxlYt
+        canonical_url: 'https://vine.co/v/{RESOURCE}' //https://vine.co/v/5gAphDzxlYt
       },
       {
         // Vine Profile
-        pattern: /^http(s)?:\/\/vine\.co\/([a-zA-Z0-9]+)/,
+        pattern: /.*vine\.co\/([a-zA-Z0-9]+)/,
         provider: 'vine',
         resource_type: 'user',
-        canonical_url: '{URL}' //https://vine.co/mmitchelldaviss?mode=list
+        canonical_url: 'https://vine.co/{RESOURCE}' //https://vine.co/mmitchelldaviss?mode=list
       }
     ];
 
@@ -122,6 +122,7 @@
     };
 
     var parseResource = function(pattern, url){
+      console.log(pattern.exec(url).filter(notEmpty));
       return pattern.exec(url).filter(notEmpty)[1];
     };
 

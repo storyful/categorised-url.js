@@ -9,6 +9,7 @@ describe('CategorisedUrl.fromUrl', function(){
       var catUrl = CategorisedUrl.fromUrl(url);
 
       it('should return the provider', function(){
+        console.log(catUrl.canonical_url)
         expect(catUrl.provider).toBe('vine');
       });
 
@@ -17,7 +18,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
 
       it('should return the resource', function(){
-        expect(catUrl.resource).toBe('s');
+        expect(catUrl.resource).toBe('5gAphDzxlYt');
       });
 
       it('should return the url', function(){
@@ -25,21 +26,15 @@ describe('CategorisedUrl.fromUrl', function(){
       });
 
       it('should return the canonical url', function(){
-        expect(catUrl.canonical_url).toBe('https://vine.co/v/');
+        expect(catUrl.canonical_url).toBe('https://vine.co/v/5gAphDzxlYt');
       });
     });
 
     describe('user timeline', function(){
-      var url = 'https://vine.co/mmitchelldaviss'
+      var url = 'https://vine.co/mmitchelldaviss?mode=list'
       var catUrl = CategorisedUrl.fromUrl(url);
 
       it('should return the provider', function(){
-        console.log(Object.keys(catUrl));
-        console.log(catUrl.url);
-        console.log(catUrl.provider);
-        console.log(catUrl.resource_type);
-        console.log(catUrl.resource);
-        console.log(catUrl.canonical_url);
         expect(catUrl.provider).toBe('vine');
       });
 
@@ -52,7 +47,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
 
       it('should return the url', function(){
-        expect(catUrl.url).toBe('https://vine.co/mmitchelldaviss');
+        expect(catUrl.url).toBe('https://vine.co/mmitchelldaviss?mode=list');
       });
     });
   });
