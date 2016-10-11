@@ -48,7 +48,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
 
       it('should return the canonical url', function(){
-        expect(catUrl.canonical_url).toBe('https://vine.co/');
+        expect(catUrl.canonical_url).toBe('https://vine.co/mmitchelldaviss');
       });
 
       it('should return the url', function(){
