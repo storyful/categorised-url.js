@@ -102,18 +102,18 @@
         canonical_url: 'https://vimeo.com/{RESOURCE}'
       },
       {
-        // Vine Profile
-        pattern: /^http(s)?:\/\/vine\.co\/([a-zA-Z0-9]+)/,
-        provider: 'vine',
-        resource_type: 'user',
-        canonical_url: 'https://vine.co/{RESOURCE}?mode=list' //https://vine.co/mmitchelldaviss?mode=list
-      },
-      {
         // Vine Resource
         pattern: /^http(s)?:\/\/(www\.)?vine\.co\/v/,
         provider: 'vine',
         resource_type: 'media',
         canonical_url: 'https://vine.co/v/' //https://vine.co/v/5gAphDzxlYt
+      },
+      {
+        // Vine Profile
+        pattern: /^http(s)?:\/\/vine\.co\/([a-zA-Z0-9]+)/,
+        provider: 'vine',
+        resource_type: 'user',
+        canonical_url: 'https://vine.co/{RESOURCE}?mode=list' //https://vine.co/mmitchelldaviss?mode=list
       }
     ];
 

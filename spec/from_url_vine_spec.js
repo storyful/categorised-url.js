@@ -17,11 +17,15 @@ describe('CategorisedUrl.fromUrl', function(){
       });
 
       it('should return the resource', function(){
-        expect(catUrl.resource).toBe('5gAphDzxlYt');
+        expect(catUrl.resource).toBe('s');
+      });
+
+      it('should return the url', function(){
+        expect(catUrl.url).toBe('https://vine.co/v/5gAphDzxlYt');
       });
 
       it('should return the canonical url', function(){
-        expect(catUrl.canonical_url).toBe('https://vine.co/v/5gAphDzxlYt');
+        expect(catUrl.canonical_url).toBe('https://vine.co/v/');
       });
     });
   });
