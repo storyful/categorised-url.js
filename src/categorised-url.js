@@ -122,7 +122,6 @@
     };
 
     var parseResource = function(pattern, url){
-      console.log(pattern.exec(url).filter(notEmpty));
       return pattern.exec(url).filter(notEmpty)[1];
     };
 
