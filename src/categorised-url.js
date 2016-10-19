@@ -19,14 +19,14 @@
     var providers = [
       {
         // YouTube User
-        pattern: /(?:https?:)?\/\/(?:www\.)?youtube\.com\/(?:channel\/|user\/|attribution_link\/)([a-zA-Z0-9]{1,})$/,
+        pattern: /(?:https?:)?\/\/(?:www\.)?youtube\.com\/(?:channel\/|user\/|attribution_link\/)([a-zA-Z0-9]{1,})/,
         provider: 'youtube',
         resource_type: 'user',
         canonical_url: 'https://www.youtube.com/user/{RESOURCE}/featured'
       },
       {
         // YouTube Media
-        pattern: /(?:https?:)?\/{2}(?:(?:www|m)\.)?(?:(?:youtu\.be)|(?:youtube\.com)){1}\/?(?:attribution_link)?(?:(?:v\/)|(?:\/u\/\w\/)|(?:embed\/)|(?:watch\?))?\??(?:(?:t=\S*&|u=\S*&)+)?(?:v=)?(?:v=)?([A-Za-z0-9-_]+).*/,
+        pattern: /(?:https?:)?\/{2}(?:(?:www|m)\.)?(?:(?:youtu\.be)|(?:youtube\.com)){1}\/?(?:attribution_link)?(?:(?:v\/)|(?:\/u\/\w\/)|(?:embed\/)|(?:watch\?))?\??(?:(?:t=\S*&|u=\S*&)+)?(?:v=)?(?:v=)?(?!channel|user|results)([A-Za-z0-9-_]+).*/,
         provider: 'youtube',
         resource_type: 'media',
         canonical_url: 'https://www.youtube.com/watch?v={RESOURCE}'
