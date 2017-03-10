@@ -22,6 +22,7 @@
         pattern: /((?:https?:)?\/\/(?:www\.)?youtube\.com\/(?:channel\/|user\/|attribution_link\/)([a-zA-Z0-9]{1,}))/,
         provider: 'youtube',
         resource_type: 'user',
+        canonical_url_with_type: 'https://www.youtube.com/user/{RESOURCE}/featured',
         canonical_url: 'https://www.youtube.com/user/{RESOURCE}/featured'
       },
       {
@@ -29,6 +30,7 @@
         pattern: /((?:https?:)?\/{2}(?:(?:www|m)\.)?(?:(?:youtu\.be)|(?:youtube\.com)){1}\/?(?:attribution_link)?(?:(?:v\/)|(?:\/u\/\w\/)|(?:embed\/)|(?:watch\?))?\??(?:(?:t=\S*&|u=\S*&)+)?(?:v=)?(?:v=)?(?!channel|user|results)([A-Za-z0-9-_]+).*)/,
         provider: 'youtube',
         resource_type: 'media',
+        canonical_url_with_type: 'https://www.youtube.com/watch?v={RESOURCE}',
         canonical_url: 'https://www.youtube.com/watch?v={RESOURCE}'
       },
       {
@@ -36,6 +38,7 @@
         pattern: /((?:https?:)?\/\/(?:www\.)?(?:instagr\.am|instagram\.com)\/(?!p\/)([\w\.]*)(?:\/)?$)/,
         provider: 'instagram',
         resource_type: 'user',
+        canonical_url_with_type: 'https://www.instagram.com/p/{RESOURCE}/',
         canonical_url: 'https://www.instagram.com/p/{RESOURCE}/'
       },
       {
@@ -43,6 +46,7 @@
         pattern: /((?:https?:)?\/\/(?:www\.)?(?:insta)(?:gr\.am|gram\.com)\/p\/([a-zA-Z0-9-_]+)(?:\/|\?){0,2}.*$)/,
         provider: 'instagram',
         resource_type: 'media',
+        canonical_url_with_type: 'https://www.instagram.com/p/{RESOURCE}/',
         canonical_url: 'https://www.instagram.com/p/{RESOURCE}/'
       },
       {
@@ -50,6 +54,7 @@
         pattern: /((?:https?:)?\/\/(?:www\.)facebook\.com\/(?:video\/)?(?:video\.php\?v=(\d+)|\S+\/videos\/(?:vb\.\S+\/)?(\d+))\/?.*$)/,
         provider: 'facebook',
         resource_type: 'media',
+        canonical_url_with_type: 'https://www.facebook.com/video.php?v={RESOURCE}',
         canonical_url: 'https://www.facebook.com/{RESOURCE}'
       },
       {
@@ -57,6 +62,7 @@
         pattern: /((?:https?:)?\/\/(?:www\.)facebook\.com\/(?:(?:[a-zA-Z0-9\.]+\/?photos\/(?:[a-zA-Z0-9\.-]+\/)?[a-zA-Z0-9\.-]+\/(\d+))|(?:photo.php\?fbid=(\d+)\&?))+(.+)?)/,
         provider: 'facebook',
         resource_type: 'media',
+        canonical_url_with_type: 'https://www.facebook.com/photo.php?fbid={RESOURCE}',
         canonical_url: 'https://www.facebook.com/{RESOURCE}'
       },
       {
@@ -64,20 +70,23 @@
         pattern: /((?:https?:)?\/\/(?:www\.)facebook\.com\/(?:[a-zA-Z0-9\.]+\/?)(?:posts\/)+(\d+))/,
         provider: 'facebook',
         resource_type: 'media',
-        canonical_url: '{URL}'
+        canonical_url_with_type: '{URL}',
+        canonical_url: 'https://www.facebook.com/{RESOURCE}'
       },
       {
         // Facebook Media: stories
-        pattern: /((?:https?:)?\/\/(?:www\.)facebook\.com\/permalink\.php\?(.+))/,
+        pattern: /((?:https?:)?\/\/(?:www\.)facebook\.com\/permalink\.php\?(?:story_fbid\=(\d+).+))/,
         provider: 'facebook',
         resource_type: 'media',
-        canonical_url: '{URL}'
+        canonical_url_with_type: '{URL}',
+        canonical_url: 'https://www.facebook.com/{RESOURCE}'
       },
       {
         // Facebook Profile
         pattern: /((?:https?:)?\/\/(?:www\.)facebook\.com\/(?:[a-zA-Z0-9\.]+\/?))/,
         provider: 'facebook',
         resource_type: 'user',
+        canonical_url_with_type: 'https://www.facebook.com/{RESOURCE}',
         canonical_url: 'https://www.facebook.com/{RESOURCE}'
       },
       {
@@ -85,6 +94,7 @@
         pattern: /((?:https?:)?\/\/(www\.)?twitter\.com\/[_a-zA-Z0-9]{0,}.\/status\/([0-9]{1,})\??(?:\S+)?$)/,
         provider: 'twitter',
         resource_type: 'media',
+        canonical_url_with_type: '{URL}',
         canonical_url: '{URL}'
       },
       {
@@ -92,6 +102,7 @@
         pattern: /((?:https?:)?\/\/(?:www\.)?twitter\.com\/([_a-zA-Z0-9]{0,}.)\/?$)/,
         provider: 'twitter',
         resource_type: 'user',
+        canonical_url_with_type: 'categorisedUrl',
         canonical_url: 'categorisedUrl'
       },
       {
@@ -99,6 +110,7 @@
         pattern: /(.*vimeo\..*\/(\d+))/,
         provider: 'vimeo',
         resource_type: 'media',
+        canonical_url_with_type: 'https://vimeo.com/{RESOURCE}',
         canonical_url: 'https://vimeo.com/{RESOURCE}'
       },
       {
@@ -106,6 +118,7 @@
         pattern: /(.*vine\.co\/v\/([a-zA-Z0-9]+))/,
         provider: 'vine',
         resource_type: 'media',
+        canonical_url_with_type: 'https://vine.co/v/{RESOURCE}',
         canonical_url: 'https://vine.co/v/{RESOURCE}' //https://vine.co/v/5gAphDzxlYt
       },
       {
@@ -113,6 +126,7 @@
         pattern: /(.*vine\.co\/([a-zA-Z0-9]+))/,
         provider: 'vine',
         resource_type: 'user',
+        canonical_url_with_type: 'https://vine.co/{RESOURCE}',
         canonical_url: 'https://vine.co/{RESOURCE}' //https://vine.co/mmitchelldaviss?mode=list
       }
     ];
@@ -135,6 +149,12 @@
         .replace('{URL}', categorisedUrl.url);
     };
 
+    var parseCanonicaWithTypelUrl = function(pattern, categorisedUrl){
+      return pattern
+        .replace('{RESOURCE}', categorisedUrl.resource)
+        .replace('{URL}', categorisedUrl.url);
+    };
+
     // return an empty categorisedUrl object
     var getDefault = function(){
       return JSON.parse(JSON.stringify(defaults));
@@ -149,11 +169,12 @@
         provider = providers[i];
 
         if( decodedUrl.match(provider.pattern) ){
-          categorisedUrl.url            = parseUrl(provider.pattern, decodedUrl);
-          categorisedUrl.provider       = provider.provider;
-          categorisedUrl.resource_type  = provider.resource_type;
-          categorisedUrl.resource       = parseResource(provider.pattern, decodedUrl);
-          categorisedUrl.canonical_url  = parseCanonicalUrl( provider.canonical_url, categorisedUrl );
+          categorisedUrl.url                     = parseUrl(provider.pattern, decodedUrl);
+          categorisedUrl.provider                = provider.provider;
+          categorisedUrl.resource_type           = provider.resource_type;
+          categorisedUrl.resource                = parseResource(provider.pattern, decodedUrl);
+          categorisedUrl.canonical_url_with_type = parseCanonicaWithTypelUrl( provider.canonical_url_with_type, categorisedUrl )
+          categorisedUrl.canonical_url           = parseCanonicalUrl( provider.canonical_url, categorisedUrl );
 
           break;
         }

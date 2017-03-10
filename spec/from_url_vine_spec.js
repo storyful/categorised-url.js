@@ -47,7 +47,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
 
       it('should return the url', function(){
-        expect(catUrl.url).toBe('https://vine.co/mmitchelldaviss?mode=list');
+        expect(catUrl.url).toBe('https://vine.co/mmitchelldaviss');
       });
     });
   });

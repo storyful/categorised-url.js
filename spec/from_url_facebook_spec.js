@@ -204,7 +204,7 @@ describe('CategorisedUrl.fromUrl', function(){
       });
 
       it('should return the resource', function(){
-        expect(catUrl.resource).toBe('story_fbid=1479985105636419&id=1433208640314066');
+        expect(catUrl.resource).toBe('1479985105636419');
       });
     });
 
