@@ -14,7 +14,6 @@
     "run-sequence": "^1.0.2"
   },
   "dependencies": {
-    "categorised-url.js": "git+https://github.com/storyful/categorised-url.js.git"
   },
   "scripts": {
     "test": "gulp spec",
