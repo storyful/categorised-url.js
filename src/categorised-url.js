@@ -19,7 +19,7 @@
     var providers = [
       {
         // YouTube User
-        pattern: /((?:https?:)?\/\/(?:www\.)?youtube\.com\/(?:channel\/|user\/|attribution_link\/)([a-zA-Z0-9]{1,}))/,
+        pattern: /((?:https?:)?\/\/(?:www\.)?youtube\.com\/(?:channel\/|user\/|attribution_link\/)([a-zA-Z0-9-_]{1,}))/,
         provider: 'youtube',
         resource_type: 'user',
         canonical_url: 'https://www.youtube.com/user/{RESOURCE}/featured'
