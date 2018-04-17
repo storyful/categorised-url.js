@@ -3,10 +3,11 @@ categorised-url.js
 
 Categorise urls and extract inferable meta-data.
 
-### TODO
+### V2 TODO
 
-* README
+* Update dev dependencies
 * Setup ESLint
 * Setup Travis CI
-* Update dev dependencies
+* README
+* Add release script
 * Open Source
