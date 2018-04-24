@@ -1,4 +1,3 @@
-
 describe('CategorisedUrl.fromUrl', function(){
   var CategorisedUrl = require('../lib/categorised-url.js');
 

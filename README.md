@@ -48,8 +48,10 @@ var urlMetadata = CategorisedUrl.fromUrl('https://www.youtube.com/watch?v=x8wC-W
 
 ### V2 TODO
 
-* [ ] Update dev dependencies
-* [ ] Setup ESLint
+* [✓] Update dev dependencies
+* [✓] Setup ESLint
+* [ ] Setup Babel
+* [ ] Setup dummy for testing
 * [ ] Setup Travis CI
 * [ ] Add release script
 * [ ] Update README
