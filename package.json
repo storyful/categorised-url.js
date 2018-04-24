@@ -17,13 +17,13 @@
   "dependencies": {},
   "scripts": {
     "test": "jasmine",
-    "lint-lib": "eslint lib/**",
-    "lint-spec": "eslint spec/**/*.js",
+    "lint:lib": "eslint lib/**",
+    "lint:spec": "eslint spec/**/*.js",
     "build": "webpack --config webpack.js"
   },
   "pre-commit": [
-    "lint-lib",
-    "lint-spec",
+    "lint:lib",
+    "lint:spec",
     "test",
     "build"
   ]
