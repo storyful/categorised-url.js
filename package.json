@@ -19,11 +19,13 @@
   "dependencies": {},
   "scripts": {
     "test": "jasmine",
-    "lint": "eslint lib/**",
+    "lint-lib": "eslint lib/**",
+    "lint-spec": "eslint spec/**/*.js",
     "validate": "npm ls"
   },
   "pre-commit": [
-    "lint",
+    "lint-lib",
+    "lint-spec",
     "test"
   ]
 }
