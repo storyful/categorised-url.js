@@ -2,10 +2,12 @@
   "name": "categorised-url.js",
   "version": "1.8.2",
   "private": true,
-  "main": "src/categorised-url.js",
+  "main": "lib/categorised-url.js",
   "devDependencies": {
     "bower": "^1.3.12",
     "eslint": "^4.19.1",
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-jasmine": "^2.9.3",
     "gulp": "^3.8.10",
     "gulp-jasmine": "4.0.0",
     "gulp-jasmine-phantom": "3.0.0",
@@ -18,12 +20,11 @@
   "dependencies": {},
   "scripts": {
     "test": "jasmine",
-    "jshint": "jshint",
-    "lint": "jshint .",
+    "eslint": "eslint lib/**",
     "validate": "npm ls"
   },
   "pre-commit": [
-    "jshint",
+    "eslint",
     "test"
   ]
 }

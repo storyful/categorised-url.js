@@ -1,7 +1,7 @@
 /* jshint undef: false, unused: true */
 
 describe('CategorisedUrl.fromUrl', function(){
-  const CategorisedUrl = require('../lib/categorised-url.js');
+  var CategorisedUrl = require('../lib/categorised-url.js');
 
   describe('Instagram', function(){
     describe('user', function(){
