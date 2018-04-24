@@ -1,9 +1,7 @@
-/* jshint undef: false, unused: true */
-
 describe('CategorisedUrl.fromUrl', function(){
+  var CategorisedUrl = require('../lib/categorised-url.js');
 
   describe('Facebook', function(){
-
     describe('video as with multiple query param', function(){
       var url = 'https://www.facebook.com/video.php?v=587644514714297&fref=nf';
       var catUrl = CategorisedUrl.fromUrl(url);
@@ -208,6 +206,72 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
 
-  });
+    // describe('unknown resource type from media', function(){
+    //   var url = 'https://www.facebook.com/10155610538327701';
+    //   var catUrl = CategorisedUrl.fromUrl(url);
 
+    //   it('should return the provider', function(){
+    //     expect(catUrl.provider).toBe('facebook');
+    //   });
+
+    //   it('should return the resource_type', function(){
+    //     expect(catUrl.resource_type).toBe( null );
+    //   });
+
+    //   it('should return the resource', function(){
+    //     expect(catUrl.resource).toBe('10155610538327701');
+    //   });
+    // });
+
+    // describe('unknown resource type from user', function(){
+    //   var url = 'https://facebook.com/10154860270117217';
+    //   var catUrl = CategorisedUrl.fromUrl(url);
+
+    //   it('should return the provider', function(){
+    //     expect(catUrl.provider).toBe('facebook');
+    //   });
+
+    //   it('should return the resource_type', function(){
+    //     expect(catUrl.resource_type).toBe( null );
+    //   });
+
+    //   it('should return the resource', function(){
+    //     expect(catUrl.resource).toBe('10154860270117217');
+    //   });
+    // });
+
+    describe('video with user name and user id', function(){
+      var url = 'https://www.facebook.com/ManchesterSU/videos/10155610538327701/';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('facebook');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('media');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('10155610538327701');
+      });
+    });
+
+    describe('post with user name and post id', function(){
+      var url = 'https://www.facebook.com/bbcnews/posts/10154860270117217';
+      var catUrl = CategorisedUrl.fromUrl(url);
+
+      it('should return the provider', function(){
+        expect(catUrl.provider).toBe('facebook');
+      });
+
+      it('should return the resource_type', function(){
+        expect(catUrl.resource_type).toBe('media');
+      });
+
+      it('should return the resource', function(){
+        expect(catUrl.resource).toBe('10154860270117217');
+      });
+    });
+  });
 });

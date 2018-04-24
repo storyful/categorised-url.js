@@ -1,0 +1,7 @@
+{
+  "extends": "eslint:recommended",
+  "env": {
+    "jasmine": true,
+    "node": true
+  }
+}

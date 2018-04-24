@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+    <p id="input">https://www.youtube.com/user/storyful</strong></p>
+    <p id="output"></p>
+  </div>
+  <script type="text/javascript" src="dist/categorised-url.min.js"></script>
+  <script type="text/javascript">
+    const url = document.getElementById("input").innerText;
+    const urlMeta = CategorisedUrl.fromUrl(url);
+
+    document.getElementById("output").innerText = `Hello world! ${meta}`;
+  </script>
+</body>
+</html>

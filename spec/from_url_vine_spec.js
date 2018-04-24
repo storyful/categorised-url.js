@@ -1,15 +1,12 @@
-/* jshint undef: false, unused: true */
-
 describe('CategorisedUrl.fromUrl', function(){
+  var CategorisedUrl = require('../lib/categorised-url.js');
 
   describe('Vine', function(){
-
     describe('video for resource url', function(){
       var url = 'https://vine.co/v/5gAphDzxlYt';
       var catUrl = CategorisedUrl.fromUrl(url);
 
       it('should return the provider', function(){
-        console.log(catUrl.canonical_url)
         expect(catUrl.provider).toBe('vine');
       });
 
@@ -47,9 +44,8 @@ describe('CategorisedUrl.fromUrl', function(){
       });
 
       it('should return the url', function(){
-        expect(catUrl.url).toBe('https://vine.co/mmitchelldaviss?mode=list');
+        expect(catUrl.url).toBe('https://vine.co/mmitchelldaviss');
       });
     });
   });
-
 });
