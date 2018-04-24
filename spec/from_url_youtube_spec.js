@@ -1,6 +1,7 @@
 /* jshint undef: false, unused: true */
 
 describe('CategorisedUrl.fromUrl', function(){
+  const CategorisedUrl = require('../lib/categorised-url.js');
 
   describe('YouTube', function(){
     describe('user', function(){
@@ -184,5 +185,4 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
   });
-
 });

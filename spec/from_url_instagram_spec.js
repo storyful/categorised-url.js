@@ -1,9 +1,9 @@
 /* jshint undef: false, unused: true */
 
 describe('CategorisedUrl.fromUrl', function(){
+  const CategorisedUrl = require('../lib/categorised-url.js');
 
   describe('Instagram', function(){
-
     describe('user', function(){
       var url = 'http://instagram.com/google/';
       var catUrl = CategorisedUrl.fromUrl(url);
@@ -104,9 +104,5 @@ describe('CategorisedUrl.fromUrl', function(){
         expect(catUrl.canonical_url).toBe('https://www.instagram.com/p/9kJmozQ-v8/');
       });
     });
-
-
-
   });
-
 });

@@ -1,9 +1,9 @@
 /* jshint undef: false, unused: true */
 
 describe('CategorisedUrl.fromUrl', function(){
+  const CategorisedUrl = require('../lib/categorised-url.js');
 
   describe('Vimeo', function(){
-
     describe('video', function(){
       var url = 'https://vimeo.com/24228405';
       var catUrl = CategorisedUrl.fromUrl(url);
@@ -25,5 +25,4 @@ describe('CategorisedUrl.fromUrl', function(){
       });
     });
   });
-
 });

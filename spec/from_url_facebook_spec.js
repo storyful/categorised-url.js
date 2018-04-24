@@ -1,9 +1,8 @@
 /* jshint undef: false, unused: true */
-
 describe('CategorisedUrl.fromUrl', function(){
+  const CategorisedUrl = require('../lib/categorised-url.js');
 
   describe('Facebook', function(){
-
     describe('video as with multiple query param', function(){
       var url = 'https://www.facebook.com/video.php?v=587644514714297&fref=nf';
       var catUrl = CategorisedUrl.fromUrl(url);
@@ -207,7 +206,5 @@ describe('CategorisedUrl.fromUrl', function(){
         expect(catUrl.resource).toBe('story_fbid=1479985105636419&id=1433208640314066');
       });
     });
-
   });
-
 });
