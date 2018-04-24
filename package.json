@@ -21,9 +21,7 @@
     "test": "jasmine",
     "lint-lib": "eslint lib/**",
     "lint-spec": "eslint spec/**/*.js",
-    "build": "webpack --config webpack.prod.js",
-    "validate": "npm ls",
-    "lint": "jshint ."
+    "build": "webpack --config webpack.js"
   },
   "pre-commit": [
     "lint-lib",
