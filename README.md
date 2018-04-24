@@ -23,13 +23,18 @@ const CategorisedUrl = require('./categorised-url.js');
 Or load the minified library:
 
 ```html
-<script type="text/javascript" src="node_packages/categorised-url.js/dist/categorised-url.min.js"></script>
+<script type="text/javascript" src="<path-to-module>/dist/categorised-url.min.js"></script>
 ```
 
 ## Usage
 
 ```js
 var urlMetadata = CategorisedUrl.fromUrl('https://www.youtube.com/watch?v=x8wC-WxC31s');
+
+urlMetadata.provider // youtube
+urlMetadata.resource_type // media
+urlMetadata.resource // x8wC-WxC31s
+urlMetadata.canonical_url // https://www.youtube.com/watch?v=x8wC-WxC31s
 ```
 
 ### Meta Data
@@ -45,12 +50,3 @@ var urlMetadata = CategorisedUrl.fromUrl('https://www.youtube.com/watch?v=x8wC-W
 * `git clone <repository-url>` this repository
 * `cd categorized-url.js`
 * `npm install`
-
-### V2 TODO
-
-* [ ] Update dev dependencies
-* [ ] Setup ESLint
-* [ ] Setup Travis CI
-* [ ] Add release script
-* [ ] Update README
-* [ ] Publish to npm
