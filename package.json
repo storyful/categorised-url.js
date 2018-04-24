@@ -26,7 +26,6 @@
     "lint": "jshint ."
   },
   "pre-commit": [
-    "build",
     "lint-lib",
     "lint-spec",
     "test",
