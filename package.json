@@ -24,6 +24,7 @@
   },
   "dependencies": {},
   "scripts": {
+    "start": "./node_modules/karma/bin/karma start",
     "test": "jasmine",
     "lint:lib": "eslint lib/**/*.js",
     "lint:spec": "eslint spec/**/*.js",
