@@ -50,3 +50,7 @@ urlMetadata.canonical_url // https://www.youtube.com/watch?v=x8wC-WxC31s
 * `git clone <repository-url>` this repository
 * `cd categorized-url.js`
 * `npm install`
+* `npm run test` to run the test suit
+* `npm run watch` to run the test suit with a watcher
+* `npm run coverage` to export test coverage in html/lcov
+* `npm run build` to compile a minified build of this library
