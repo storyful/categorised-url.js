@@ -1,6 +1,6 @@
 # categorised-url.js
 
-Categorises URLs and extracts inferable meta-data from them. Currently supporting `Facebook`, `Instagram`, `Twitter`, `Vimeo`, `Vine` and `YouTube`.
+Categorises URLs and extracts inferable meta-data from them. Currently supporting `Facebook`, `Instagram`, `Twitter`, `TikTok`, `Vimeo`, `Vine` and `YouTube`.
 
 ## Installation
 
